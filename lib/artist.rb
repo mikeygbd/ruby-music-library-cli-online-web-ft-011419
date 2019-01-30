@@ -8,6 +8,7 @@ class Artist
   def initialize(name)
     @name = name
     @songs = []
+    # @genres = []
   end
   def save
     @@all << self
@@ -26,12 +27,22 @@ class Artist
   def add_song(song)
     @songs << song
     @songs.uniq!
-  if song.artist != ""
+  if song.artist != nil
     song.artist
   else
   song.artist = self
   end
 end
+
+  # def genres
+  #   g = Song.genre
+  #   if g != nil
+  #     @genres << g
+  #     @genres
+  #   end
+
+
+  # end
 
   def self.destroy_all
     @@all.clear
