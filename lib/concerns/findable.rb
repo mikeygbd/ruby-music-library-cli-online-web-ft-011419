@@ -1,3 +1,4 @@
+require 'pry'
 module Concerns::Findable
 
 
@@ -6,6 +7,7 @@ module Concerns::Findable
     self.all.find do |song|
       if song.name == name
         song
+        binding.pry
       end
     end
   end
