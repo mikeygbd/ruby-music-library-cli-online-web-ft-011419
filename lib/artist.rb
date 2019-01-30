@@ -1,15 +1,17 @@
 require 'pry'
 class Artist
+extend Concerns::Findable
 
-  attr_accessor :name, :songs
+
+  attr_accessor :name, :genre, :songs
 
 @@all = []
 
   def initialize(name)
     @name = name
     @songs = []
-    # @genres = []
   end
+
   def save
     @@all << self
   end
@@ -34,15 +36,13 @@ class Artist
   end
 end
 
-  # def genres
-  #   g = Song.genre
-  #   if g != nil
-  #     @genres << g
-  #     @genres
-  #   end
-
-
-  # end
+  def genres
+    @songs.collect do |song|
+      if song.genre != nil
+         song.genre
+        end
+      end.uniq
+    end
 
   def self.destroy_all
     @@all.clear

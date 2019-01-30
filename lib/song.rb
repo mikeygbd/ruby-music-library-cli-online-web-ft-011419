@@ -38,6 +38,23 @@ class Song
     end
   end
 
+  def self.find_by_name(name)
+    self.all.find do |song|
+      if song.name == name
+        song
+      end
+    end
+  end
+
+  def self.find_or_create_by_name(name)
+     if self.find_by_name(name)
+       song = self.find_by_name(name)
+     else
+    song = self.create(name)
+    end
+    song
+  end
+
   def self.destroy_all
     @@all.clear
   end
