@@ -73,7 +73,7 @@ class MusicLibraryController
  end
 
  def list_songs_by_genre
-  puts "Please enter the name of an artist:"
+  puts "Please enter the name of a genre:"
   genre_name = gets
   genre = Artist.all.select { |genre| genre.name == genre_name }.first
   if genre != nil
