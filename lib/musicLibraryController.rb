@@ -80,6 +80,7 @@ class MusicLibraryController
     sorted_songs = genre.sort_by {|song| song.name}
     sorted_songs.each_with_index do |song, index|
       puts "#{index + 1}. #{song.name} - #{song.artist.name}"
+      binding.pry
     end
   end
 end
