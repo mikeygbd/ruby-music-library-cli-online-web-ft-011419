@@ -68,19 +68,26 @@ class MusicLibraryController
   end
 end
 
-  def play_song
-    song_array = []
-     list_songs.each do |song|
-       song_array << song
+  # def play_song
+  #   song_array = []
+  #    list_songs.each do |song|
+  #      song_array << song
+  #   puts "Which song number would you like to play?"
+  #   input = gets.chomp.to_i
+  #   if input > 0 && input <= song_array.size
+  #     song_choice = song_list[input - 1]
+  #     end
+  #   end
+  # end
 
-    puts "Which song number would you like to play?"
-    input = gets.chomp.to_i
-    if input > 0 && input <= song_array.size
-      song_choice = song_list[input - 1]
+
+    def play_song
+      puts "Which song number would you like to play?"
+      input = gets.to_i
+      if (1..Song.all.length).include?(input)
+        song = Song.all.sort_by {|song| song.name}[input-1]
     end
+      puts "Playing #{song.name} by #{song.artist.name}" if song
     end
-
-
-  end
 
 end
