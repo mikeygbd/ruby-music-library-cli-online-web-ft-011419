@@ -77,7 +77,7 @@ end
     input = gets.chomp.to_i
     if input > 0 && input <= song_array.size
       song_choice = song_list[input - 1]
-
+    end
     end
 
 
