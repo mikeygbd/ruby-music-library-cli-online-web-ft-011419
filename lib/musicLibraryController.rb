@@ -77,10 +77,11 @@ class MusicLibraryController
   genre_name = gets
   genre = Artist.all.select { |genre| genre.name == genre_name }.first
   if genre != nil
+    
     sorted_songs = genre.sort_by {|song| song.name}
     sorted_songs.each_with_index do |song, index|
       puts "#{index + 1}. #{song.name} - #{song.artist.name}"
-      binding.pry
+
     end
   end
 end
