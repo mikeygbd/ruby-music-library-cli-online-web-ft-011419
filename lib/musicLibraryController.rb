@@ -54,9 +54,10 @@ class MusicLibraryController
   songs.each do |song|
   if song.artist == artist_found
     artist_songs << song
-    break
+
     sorted_songs = artist_songs.sort_by {|s| s.name}
     sorted_songs.each_with_index { |song, index|  puts "#{index + 1}. #{song.name} - #{song.genre.name}"}
+    break
       end
     end
   end
