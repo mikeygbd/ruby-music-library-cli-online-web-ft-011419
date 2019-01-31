@@ -44,22 +44,6 @@ class MusicLibraryController
     end
   end
 
-  # def list_songs_by_artist
-  # puts  "Please enter the name of an artist:"
-  # input = gets.chomp
-  # artist_found = Artist.find_by_name(input)
-  # # binding.pry
-  # # songs = Song.all.sort_by {|s| s.name}
-  # # artist_songs = []
-  # # songs.each do |song|
-  # # if song.artist == artist_found
-  # #   artist_songs << song
-  #   # sorted_songs = artist_songs.sort_by {|s| s.name}
-  #   artist_found.each_with_index { |song, index|  puts "#{index + 1}. #{song.name} - #{song.genre.name}"}
-  #   binding.pry
-  #   #   end
-  #   # end
-  # end
   def list_songs_by_artist
    puts "Please enter the name of an artist:"
    artist_name = gets
@@ -76,15 +60,18 @@ class MusicLibraryController
   puts "Please enter the name of a genre:"
   genre_name = gets
   genre = Genre.all.select { |genre| genre.name == genre_name }.first
-      # binding.pry
   if genre != nil
-
     sorted_songs = genre.songs.sort_by {|song| song.name}
     sorted_songs.each_with_index do |song, index|
       puts "#{index + 1}. #{song.artist.name} - #{song.name}"
-
     end
   end
 end
+
+  def play_song
+    list_songs
+    gets.chomp
+
+  end
 
 end
