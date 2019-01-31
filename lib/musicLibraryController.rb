@@ -49,13 +49,13 @@ class MusicLibraryController
   input = gets.chomp
   artist_found = Artist.find_by_name(input)
   # binding.pry
-  songs = Song.all.sort_by {|s| s.name}
-  artist_songs = []
-  songs.each do |song|
-  if song.artist == artist_found
-    artist_songs << song
-    sorted_songs = artist_songs.sort_by {|s| s.name}
-    sorted_songs.each_with_index { |song, index|  puts "#{index + 1}. #{song.name} - #{song.genre.name}"}
+  # songs = Song.all.sort_by {|s| s.name}
+  # artist_songs = []
+  # songs.each do |song|
+  # if song.artist == artist_found
+  #   artist_songs << song
+    # sorted_songs = artist_songs.sort_by {|s| s.name}
+    artist_found.each_with_index { |song, index|  puts "#{index + 1}. #{song.name} - #{song.genre.name}"}
     binding.pry
       end
     end
