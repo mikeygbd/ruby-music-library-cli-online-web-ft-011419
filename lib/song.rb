@@ -41,6 +41,25 @@ extend Concerns::Findable
     end
   end
 
+
+  # def self.find_by_name(name)
+  #   self.all.find do |song|
+  #     if song.name == name
+  #       song
+  #     end
+  #   end
+  # end
+
+  # def self.find_or_create_by_name(name)
+  #    if self.find_by_name(name)
+  #      song = self.find_by_name(name)
+  #    else
+  #   song = self.create(name)
+  #   end
+  #   song
+  # end
+
+
   def self.new_from_filename(filename)
     artist_n_song = filename.split(" - ")
     song = self.find_or_create_by_name(artist_n_song[1])
