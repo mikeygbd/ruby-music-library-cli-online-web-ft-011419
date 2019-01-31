@@ -62,14 +62,12 @@ class MusicLibraryController
   # end
   def list_songs_by_artist
    puts "Please enter the name of an artist:"
-   artist_name = gets
-   artist = Artist.all.select { |artist| artist.name == artist_name }.first #need to use .first b/c there are duplicates of each object and we want to select only one object
+   artist_name = gets.chomp
+   artist = Artist.all.select { |artist| artist.name == artist_name }.first
    if artist != nil
      sorted_songs = artist.songs.sort_by {|song| song.name}
-    #  i = 1
      sorted_songs.each_with_index do |song, index|
        puts "#{index + 1}. #{song.name} - #{song.genre.name}"
-      #  i += 1
      end
    end
  end
