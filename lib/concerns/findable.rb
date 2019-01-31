@@ -3,13 +3,21 @@ module Concerns::Findable
 
 
 
-  def self.find_by_name(name)
+  def find_by_name(name)
     self.all.find do |song|
       if song.name == name
         song
-        binding.pry
       end
     end
+  end
+
+  def find_or_create_by_name(name)
+     if self.find_by_name(name)
+       song = self.find_by_name(name)
+     else
+    song = self.create(name)
+    end
+    song
   end
 
 
