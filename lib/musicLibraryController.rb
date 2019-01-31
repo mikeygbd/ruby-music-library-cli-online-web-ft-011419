@@ -76,7 +76,7 @@ class MusicLibraryController
   puts "Please enter the name of a genre:"
   genre_name = gets
   genre = Genre.all.select { |genre| genre.name == genre_name }.first
-      binding.pry
+      # binding.pry
   if genre != nil
 
     sorted_songs = genre.songs.sort_by {|song| song.name}
