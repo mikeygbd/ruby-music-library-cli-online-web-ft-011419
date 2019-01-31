@@ -51,7 +51,7 @@ class MusicLibraryController
   # binding.pry
   songs = Song.all.sort_by {|s| s.name}
   artist_songs = []
-  songs.map do |song|
+  songs.each do |song|
   if song.artist == artist_found
     artist_songs << song
     sorted_songs = artist_songs.sort_by {|s| s.name}
