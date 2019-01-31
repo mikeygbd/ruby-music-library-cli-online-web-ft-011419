@@ -1,7 +1,6 @@
-require 'pry'
 class Artist
-extend Concerns::Findable
 
+extend Concerns::Findable
 
   attr_accessor :name, :genre, :songs
 
@@ -47,5 +46,4 @@ end
   def self.destroy_all
     @@all.clear
   end
-
 end
