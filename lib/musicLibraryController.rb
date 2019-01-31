@@ -58,7 +58,7 @@ class MusicLibraryController
     artist_found.each_with_index { |song, index|  puts "#{index + 1}. #{song.name} - #{song.genre.name}"}
     # binding.pry
     #   end
-    end
+    # end
   end
 
   def list_songs_by_genre
