@@ -45,10 +45,10 @@ class MusicLibraryController
   end
 
   def list_songs_by_artist
-   puts "Please enter the name of an artist:"
-   artist_name = gets
-   artist = Artist.all.select { |artist| artist.name == artist_name }.first
-   if artist != nil
+     puts "Please enter the name of an artist:"
+     artist_name = gets
+     artist = Artist.all.select { |artist| artist.name == artist_name }.first
+     if artist != nil
      sorted_songs = artist.songs.sort_by {|song| song.name}
      sorted_songs.each_with_index do |song, index|
        puts "#{index + 1}. #{song.name} - #{song.genre.name}"
@@ -57,10 +57,10 @@ class MusicLibraryController
  end
 
  def list_songs_by_genre
-  puts "Please enter the name of a genre:"
-  genre_name = gets
-  genre = Genre.all.select { |genre| genre.name == genre_name }.first
-  if genre != nil
+   puts "Please enter the name of a genre:"
+    genre_name = gets
+    genre = Genre.all.select { |genre| genre.name == genre_name }.first
+    if genre != nil
     sorted_songs = genre.songs.sort_by {|song| song.name}
     sorted_songs.each_with_index do |song, index|
       puts "#{index + 1}. #{song.artist.name} - #{song.name}"
@@ -86,10 +86,35 @@ end
       input = gets.to_i
       if (1..Song.all.length).include?(input)
         song = Song.all.sort_by {|song| song.name}[input-1]
+      end
+      if song
+        puts "Playing #{song.name} by #{song.artist.name}"
+      end
     end
-    if song
-      puts "Playing #{song.name} by #{song.artist.name}"
+
+    def triggers
+      input = gets.chomp
+      if input == "list songs"
+        list_songs
+      elsif input == "list artists"
+        list_artists
+      elsif input == "list genres"
+        list_genres
+      elsif input == "list artist"
+        list_songs_by_artist
+      elsif input == "list genre"
+        list_songs_by_genre
+      elsif input == "play song"
+        play_song
+      end
     end
+  end
+end
+
+
+
+
+
     end
 
 end
