@@ -44,22 +44,35 @@ class MusicLibraryController
     end
   end
 
+  # def list_songs_by_artist
+  # puts  "Please enter the name of an artist:"
+  # input = gets.chomp
+  # artist_found = Artist.find_by_name(input)
+  # # binding.pry
+  # # songs = Song.all.sort_by {|s| s.name}
+  # # artist_songs = []
+  # # songs.each do |song|
+  # # if song.artist == artist_found
+  # #   artist_songs << song
+  #   # sorted_songs = artist_songs.sort_by {|s| s.name}
+  #   artist_found.each_with_index { |song, index|  puts "#{index + 1}. #{song.name} - #{song.genre.name}"}
+  #   binding.pry
+  #   #   end
+  #   # end
+  # end
   def list_songs_by_artist
-  puts  "Please enter the name of an artist:"
-  input = gets.chomp
-  artist_found = Artist.find_by_name(input)
-  # binding.pry
-  # songs = Song.all.sort_by {|s| s.name}
-  # artist_songs = []
-  # songs.each do |song|
-  # if song.artist == artist_found
-  #   artist_songs << song
-    # sorted_songs = artist_songs.sort_by {|s| s.name}
-    artist_found.each_with_index { |song, index|  puts "#{index + 1}. #{song.name} - #{song.genre.name}"}
-    binding.pry
-    #   end
-    # end
-  end
+   puts "Please enter the name of an artist:"
+   artist_name = gets
+   artist = Artist.all.select { |artist| artist.name == artist_name }.first #need to use .first b/c there are duplicates of each object and we want to select only one object
+   if artist != nil
+     ordered_songs = artist.songs.sort_by {|song| song.name}
+     i = 1
+     ordered_songs.each do |song|
+       puts "#{i}. #{song.name} - #{song.genre.name}"
+       i += 1
+     end
+   end
+ end
 
   def list_songs_by_genre
     puts "Please enter the name of a genre:"
