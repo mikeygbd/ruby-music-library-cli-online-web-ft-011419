@@ -63,7 +63,7 @@ class MusicLibraryController
   def list_songs_by_artist
    puts "Please enter the name of an artist:"
    artist_name = gets
-   artist = Artist.all.select { |artist| artist.name == artist_name }.first
+   artist = Artist.all.select { |artist| artist.name == artist_name }
    if artist != nil
      sorted_songs = artist.songs.sort_by {|song| song.name}
      sorted_songs.each_with_index do |song, index|
@@ -72,16 +72,16 @@ class MusicLibraryController
    end
  end
 
- def list_songs_by_genre
-  puts "Please enter the name of an artist:"
-  genre_name = gets
-  genre = Genre.all.select { |genre| genre.name == genre_name }.first
-  if genre != nil
-    sorted_songs = genre.songs.sort_by {|song| song.name}
-    sorted_songs.each_with_index do |song, index|
-      puts "#{index + 1}. #{song.name} - #{song.artist.name}"
-    end
-  end
-end
+#  def list_songs_by_artist
+#   puts "Please enter the name of an artist:"
+#   artist_name = gets
+#   artist = Artist.all.select { |artist| artist.name == artist_name }.first
+#   if artist != nil
+#     sorted_songs = artist.songs.sort_by {|song| song.name}
+#     sorted_songs.each_with_index do |song, index|
+#       puts "#{index + 1}. #{song.name} - #{song.genre.name}"
+#     end
+#   end
+# end
 
 end
